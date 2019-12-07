@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th>Marge opérationnelle</th>
-            <th>Marge brut</th>
+            <th>Marge brute</th>
             <th>Part URSSAF	</th>
           </tr>
         </thead>
