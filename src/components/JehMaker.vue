@@ -2,7 +2,22 @@
   <div>
     <div is="sui-container">
       <h1 is="sui-header" >JEH Maker</h1>
-      <p>Marge opérationnelle : {{ opMargin | euro}} ({{averageMarginJe}} %)</p>
+      <table class="ui celled table center aligned segment">
+        <thead>
+          <tr>
+            <th>Marge opérationnelle</th>
+            <th>Marge brut</th>
+            <th>Part URSSAF	</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ opMargin | euro}} ({{averageMarginJe}} %)</td>
+            <td>{{ totalPrice-totalPay | euro}} ({{((totalPrice-totalPay)/totalPrice*100).toFixed(2)}}  %)</td>
+            <td>{{ totalUrssafJe | euro}} ({{(totalUrssafJe/totalPrice*100).toFixed(2)}} %)</td>
+          </tr>
+        </tbody>
+      </table>
       <sui-grid :columns="3">
         <sui-grid-row>
           <sui-grid-column>
@@ -240,10 +255,10 @@ export default class JehMaker extends Vue {
       averageJeh += v.jeh
       this_.totalConsultant += v.nbConsultant
       averageMargin += v.margin
+      averageMarginJe += v.marginJE
       this_.totalNbJeh += v.nbJeh
       this_.totalPay += v.pay
       this_.totalUrssafJe += v.urssafJE
-      averageMarginJe += v.marginJE
       this_.totalUrssafConsultant += v.urssafConsultant
       this_.totalNetConsultant += v.netConsultant
       this_.totalNetByConsultant += v.netByConsultant
